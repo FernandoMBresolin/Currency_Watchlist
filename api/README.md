@@ -81,8 +81,6 @@ Explore todos os endpoints em http://localhost:5000/swagger.
 
 ## Banco de Dados
 - Usa SQLite (watchlist.db) para armazenar moedas.
-- Campos: code (ex.: "USD"), name (ex.: "Dólar Americano"), rate (float ou null), updated_at (timestamp ou null).
-- O banco é inicializado automaticamente com BRL incluído.
 
 ## Desenvolvimento
 - Para adicionar novas moedas permitidas, edite ALLOWED_CURRENCIES em app.py.
