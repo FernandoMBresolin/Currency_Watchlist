@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watchlist de Taxas de Câmbio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Watchlist de Moedas</h1>
+    <select id="baseSelect">
+      <option value="USD">Exibir a taxa em USD</option>
+      <option value="BRL" selected>Exibir a taxa em BRL</option>
+    </select>
+    <select id="currencySelect">
+        <option value="" disabled selected>Selecione uma moeda</option>
+    </select>
+    
+    <!-- Container apenas com o botão -->
+    <div id="updateContainer">
+      <button id="updateRatesButton">Atualizar Taxas</button>
+    </div>
+    
+    <div id="watchlist" class="watchlist"></div>
+    <script src="script.js"></script>
+</body>
+</html>

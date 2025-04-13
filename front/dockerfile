@@ -1,0 +1,19 @@
+# Usa a imagem oficial do Nginx como base
+FROM nginx:alpine
+
+# Define o diretório de trabalho no container
+WORKDIR /usr/share/nginx/html
+
+# Remove os arquivos padrão do Nginx
+RUN rm -rf ./*
+
+# Copia os arquivos do frontend (HTML, CSS, JS) para o diretório do Nginx
+COPY index.html .
+COPY styles.css .
+COPY script.js .
+
+# Expõe a porta 80 para acesso externo
+EXPOSE 80
+
+# Inicia o Nginx em modo foreground
+CMD ["nginx", "-g", "daemon off;"]

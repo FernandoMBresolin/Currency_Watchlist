@@ -1,0 +1,23 @@
+# Usa a imagem oficial do Python como base
+FROM python:3.11-slim
+
+# Define o diretório de trabalho no container
+WORKDIR /app
+
+# Copia o arquivo de requisitos
+COPY requirements.txt .
+
+# Instala as dependências
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copia o código do backend
+COPY app.py .
+COPY schema/ schema/
+COPY model/ model/
+COPY static/ static/
+
+# Expõe a porta 5000 (padrão do Flask)
+EXPOSE 5000
+
+# Define o comando para iniciar o Flask
+CMD ["python", "app.py"]

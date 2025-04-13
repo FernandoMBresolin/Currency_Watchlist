@@ -1,0 +1,130 @@
+/* Estilo global */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Cabeçalho melhorado */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    color: #fff;
+    background: linear-gradient(135deg, #007BFF, #00A3FF);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Seletor estilizado */
+select {
+    width: 100%;
+    padding: 12px 16px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+select:focus {
+    outline: none;
+    border-color: #007BFF;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Container para o botão de atualizar */
+#updateContainer {
+    display: flex;
+    justify-content: center; /* Centraliza o botão */
+    margin-bottom: 20px;
+}
+
+/* Botão de atualizar */
+#updateRatesButton {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#updateRatesButton:hover {
+    background-color: #218838;
+}
+
+/* Container dos cards */
+.watchlist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Estilo dos cards padronizados */
+.card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    width: 180px;         /* Largura fixa para todos os cards */
+    height: 150px;        /* Altura fixa para todos os cards */
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;   /* Organiza os elementos verticalmente */
+    justify-content: space-between;  /* Distribui o espaço para que o botão fique sempre no fundo */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* Cabeçalho do card */
+.card h3 {
+    margin: 0;
+    font-size: 20px;
+    text-align: center;
+    color: #333;
+}
+
+/* Estilo para o símbolo da moeda */
+.card .symbol {
+    font-size: 16px;
+    color: #555;
+    text-align: center;
+    margin-top: 5px;
+}
+
+/* Elementos de informação (taxa e nota) */
+.card .rate,
+.card .updated_at {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Botão de remover posicionado na parte inferior central */
+.remove-btn {
+    align-self: center;   /* Centraliza horizontalmente dentro do card */
+    margin-top: auto;       /* Garante que o botão fique no fundo do card */
+    background-color: #FF4444;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.remove-btn:hover {
+    background-color: #cc0000;
+}
