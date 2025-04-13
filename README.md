@@ -4,8 +4,8 @@ Bem-vindo ao **Watchlist de Taxas de Câmbio**, um projeto para acompanhar taxas
 
 ## Visão Geral
 O projeto é composto por dois componentes principais:
-- **Frontend**: Uma interface web para visualizar e gerenciar a watchlist de moedas.
-- **Backend**: Uma API RESTful para armazenar moedas, gerenciar taxas e integrar com APIs externas.
+- **Frontend**: Uma interface web para visualizar e gerenciar a watchlist de moedas, comunicando com API externa.
+- **Backend**: Uma API RESTful para armazenar moedas e gerenciar taxas.
 
 A aplicação usa **Docker** para facilitar a execução em diferentes ambientes, garantindo consistência entre desenvolvimento e produção.
 
