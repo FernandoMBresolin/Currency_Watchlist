@@ -49,8 +49,8 @@ restrições de CORS, então use esta opção apenas para visualizar a interface
 - O frontend se comunica com o backend Flask em http://127.0.0.1:5000 para:
  - Listar moedas salvas (GET /currencies).
  - Adicionar moedas (POST /currencies).
- - Atualizar taxas (PUT /currencies/<code>).
- - Remover moedas (DELETE /currencies/<code>).
+ - Atualizar taxas (PUT /currencies).
+ - Remover moedas (DELETE /currencies).
 - Certifique-se de que o backend está rodando antes de usar o frontend.
 
 ## Integração com API Externa
