@@ -1,7 +1,7 @@
-## Currency Watchlist API
+# Currency Watchlist API
 Esta é a API backend da aplicação Currency Watchlist, construída com Flask para gerenciar uma watchlist de moedas fiduciárias e criptomoedas. Ela armazena moedas em um banco SQLite, permite adicionar, atualizar e remover moedas, e fornece documentação interativa via Swagger.
 
-# Tecnologias Utilizadas
+## Tecnologias Utilizadas
 - Python 3.11: Linguagem principal.
 - Flask: Framework web para a API.
 - Flask-RESTful: Estruturação de endpoints.
@@ -10,14 +10,14 @@ Esta é a API backend da aplicação Currency Watchlist, construída com Flask p
 - Flask-Swagger-UI: Documentação OpenAPI/Swagger.
 - SQLite: Banco de dados leve.
 
-# Pré-requisitos
+## Pré-requisitos
 Para rodar a API localmente ou com Docker, você precisa de:
 - Python 3.11 (para execução local).
 - pip (para instalar dependências).
 - Docker e Docker Compose (se usar containers).
 - Opcional: Frontend rodando em http://localhost:8080 para integração completa (veja o repositório do frontend).
 
-# Estrutura do Projeto
+## Estrutura do Projeto
 backend/
 - ├── app.py            # Arquivo principal da API
 - ├── schema/
@@ -30,7 +30,7 @@ backend/
 - ├── Dockerfile        # Configuração para Docker
 - └── README.md         # Este arquivo
 
-# Como Executar
+## Como Executar
 Opção 1: Com Docker (Recomendado)
 1. Certifique-se de que o Docker e o Docker Compose estão instalados.
 2. No diretório raiz do projeto (onde está o docker-compose.yml), execute:
@@ -53,7 +53,7 @@ pip install -r requirements.txt
 python app.py
 5. Acesse a API em http://localhost:5000 (redireciona para Swagger).
 
-# Endpoints da API
+## Endpoints da API
 A API oferece os seguintes endpoints:
 
 - GET /currencies
@@ -74,23 +74,23 @@ A API oferece os seguintes endpoints:
   - Resposta: {"message": "Moeda removida"} ou erro 404.
 Explore todos os endpoints em http://localhost:5000/swagger.
 
-# Integração com o Frontend
+## Integração com o Frontend
 - O frontend (rodando em http://localhost:8080) consome esta API para gerenciar a watchlist e atualizar taxas.
 - Certifique-se de que a API está rodando antes de iniciar o frontend.
 - A API suporta CORS, permitindo requisições do frontend.
 
-# Banco de Dados
+## Banco de Dados
 - Usa SQLite (watchlist.db) para armazenar moedas.
 - Campos: code (ex.: "USD"), name (ex.: "Dólar Americano"), rate (float ou null), updated_at (timestamp ou null).
 - O banco é inicializado automaticamente com BRL incluído.
 
-# Desenvolvimento
+## Desenvolvimento
 - Para adicionar novas moedas permitidas, edite ALLOWED_CURRENCIES em app.py.
 - Para modificar endpoints, edite as classes CurrencyList e CurrencyResource em app.py.
 - Para atualizar a documentação, modifique swagger_config em app.py e rebuild o projeto.
 - Use o Swagger (/swagger) para testar endpoints durante o desenvolvimento.
 
-# Problemas Comuns
+## Problemas Comuns
 - Erro 500 no banco: Verifique se watchlist.db tem permissões de escrita no diretório backend/.
 - CORS bloqueado: Confirme que o frontend está acessando http://127.0.0.1:5000.
 - Swagger não carrega: Certifique-se de que static/swagger.json foi gerado corretamente.
