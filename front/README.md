@@ -18,11 +18,11 @@ Para rodar o frontend localmente ou com Docker, você precisa de:
 
 ## Estrutura do Projeto
 frontend/
-├── index.html        # Página principal
-├── styles.css        # Estilos da interface
-├── script.js         # Lógica de interação com APIs
-├── Dockerfile        # Configuração para Docker
-└── README.md         # Este arquivo
+- ├── index.html        # Página principal
+- ├── styles.css        # Estilos da interface
+- ├── script.js         # Lógica de interação com APIs
+- ├── Dockerfile        # Configuração para Docker
+- └── README.md         # Este arquivo
 
 ## Como Executar
 Opção 1: Com Docker (Recomendado)
