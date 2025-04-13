@@ -1,76 +1,97 @@
-# Currency Watchlist Frontend
-Este é o frontend da aplicação Currency Watchlist, uma ferramenta para acompanhar taxas 
-de câmbio de moedas fiduciárias e criptomoedas. Ele permite adicionar moedas a uma watchlist, 
-atualizar taxas em tempo real e exibir valores em USD ou BRL.
+## Currency Watchlist API
+Esta é a API backend da aplicação Currency Watchlist, construída com Flask para gerenciar uma watchlist de moedas fiduciárias e criptomoedas. Ela armazena moedas em um banco SQLite, permite adicionar, atualizar e remover moedas, e fornece documentação interativa via Swagger.
 
-## Tecnologias Utilizadas
-- HTML: Estrutura da página.
-- CSS: Estilização com cards responsivos e gradientes.
-- JavaScript: Lógica para interagir com a API externa de taxas e o backend Flask.
-- Nginx (com Docker): Servidor para hospedar os arquivos estáticos.
+# Tecnologias Utilizadas
+- Python 3.11: Linguagem principal.
+- Flask: Framework web para a API.
+- Flask-RESTful: Estruturação de endpoints.
+- Flask-SQLAlchemy: ORM para o banco SQLite.
+- Flask-CORS: Suporte a requisições cross-origin.
+- Flask-Swagger-UI: Documentação OpenAPI/Swagger.
+- SQLite: Banco de dados leve.
 
-## Pré-requisitos
-Para rodar o frontend localmente ou com Docker, você precisa de:
-- Navegador web moderno (ex.: Chrome, Firefox).
-- Node.js (opcional, apenas se usar Live Server para desenvolvimento local).
+# Pré-requisitos
+Para rodar a API localmente ou com Docker, você precisa de:
+- Python 3.11 (para execução local).
+- pip (para instalar dependências).
 - Docker e Docker Compose (se usar containers).
-- Backend rodando em http://127.0.0.1:5000 (veja o repositório do backend para instruções).
+- Opcional: Frontend rodando em http://localhost:8080 para integração completa (veja o repositório do frontend).
 
-## Estrutura do Projeto
-frontend/
-├── index.html        # Página principal
-├── styles.css        # Estilos da interface
-├── script.js         # Lógica de interação com APIs
+# Estrutura do Projeto
+backend/
+├── app.py            # Arquivo principal da API
+├── schema/
+│   └── database.py   # Configuração do banco SQLite
+├── model/
+│   └── currency.py   # Modelo da entidade Currency
+├── static/
+│   └── swagger.json  # Documentação Swagger
+├── requirements.txt  # Dependências do Python
 ├── Dockerfile        # Configuração para Docker
 └── README.md         # Este arquivo
 
-## Como Executar
+# Como Executar
 Opção 1: Com Docker (Recomendado)
 1. Certifique-se de que o Docker e o Docker Compose estão instalados.
 2. No diretório raiz do projeto (onde está o docker-compose.yml), execute:
 docker-compose up --build
-3. Acesse o frontend em http://localhost:8080.
-4. Para parar:
+3. Acesse a API em http://localhost:5000 (redireciona para Swagger).
+4. Acesse a documentação em http://localhost:5000/swagger.
+5. Para parar:
 docker-compose down
 
-Opção 2: Localmente com Live Server
-1. Instale a extensão Live Server no VS Code.
-2. Abra o diretório frontend/ no VS Code.
-3. Clique com o botão direito em index.html e selecione "Open with Live Server".
-4. Acesse em http://localhost:5500 (ou a porta configurada).
-5. Nota: Certifique-se de que o backend está rodando em http://127.0.0.1:5000.
+Opção 2: Localmente
+1. Clone o repositório e entre no diretório backend/:
+cd backend
+2. Crie um ambiente virtual:
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+venv\Scripts\activate     # Windows
+3. Instale as dependências:
+pip install -r requirements.txt
+4. Execute a API:
+python app.py
+5. Acesse a API em http://localhost:5000 (redireciona para Swagger).
 
-Opção 3: Localmente com Navegador
-1. Abra o arquivo index.html diretamente no navegador (ex.: file:///caminho/para/frontend/index.html).
-2. Limitação: Algumas funcionalidades (como chamadas à API) podem não funcionar devido a 
-restrições de CORS, então use esta opção apenas para visualizar a interface estática.
+# Endpoints da API
+A API oferece os seguintes endpoints:
 
-## Integração com o Backend
-- O frontend se comunica com o backend Flask em http://127.0.0.1:5000 para:
- - Listar moedas salvas (GET /currencies).
- - Adicionar moedas (POST /currencies).
- - Atualizar taxas (PUT /currencies/<code>).
- - Remover moedas (DELETE /currencies/<code>).
-- Certifique-se de que o backend está rodando antes de usar o frontend.
+- GET /currencies
+  - Retorna a lista de moedas na watchlist.
+  - Resposta: Array de moedas ou {"message": "Nenhuma moeda na lista"}.
+  - Exemplo: [{"code": "USD", "name": "Dólar Americano", "rate": 5.5, "updated_at": "2025-04-12T00:00:00"}]
+- POST /currencies
+  - Adiciona uma nova moeda.
+  - Corpo: {"code": "USD", "name": "Dólar Americano", "rate": null}
+  - Resposta: Moeda adicionada ou erro (400, 409).
+  - Restrição: Apenas códigos permitidos (ex.: USD, EUR, BTC).
+- PUT /currencies/<code>
+  - Atualiza a taxa de uma moeda.
+  - Corpo: {"rate": 5.6}
+  - Resposta: Moeda atualizada ou erro 404.
+- DELETE /currencies/<code>
+  - Remove uma moeda.
+  - Resposta: {"message": "Moeda removida"} ou erro 404.
+Explore todos os endpoints em http://localhost:5000/swagger.
 
-## Integração com API Externa
-- Usa a API Currency Freaks para obter taxas de câmbio em tempo real.
-- https://currencyfreaks.com/
-- Esta API está sendo utilizada no modo FREE, é necessário apenas um cadastro para liberar 1000
-consultas por mês.
-- Endpoint utilizado: Get Rates of Desired Currencies Only, retorna a última taxa disponível 
-da moeda escolhida.
-- A chave da API está configurada no script.js. Substitua-a por sua própria chave, se necessário.
+# Integração com o Frontend
+- O frontend (rodando em http://localhost:8080) consome esta API para gerenciar a watchlist e atualizar taxas.
+- Certifique-se de que a API está rodando antes de iniciar o frontend.
+- A API suporta CORS, permitindo requisições do frontend.
 
-## Desenvolvimento
-- Para modificar o frontend:
- 1. Edite index.html, styles.css ou script.js.
- 2. Teste localmente com Live Server ou rebuild com Docker.
-- Para adicionar novas moedas, atualize a lista currencies em script.js e sincronize com o backend.
+# Banco de Dados
+- Usa SQLite (watchlist.db) para armazenar moedas.
+- Campos: code (ex.: "USD"), name (ex.: "Dólar Americano"), rate (float ou null), updated_at (timestamp ou null).
+- O banco é inicializado automaticamente com BRL incluído.
 
-## Problemas Comuns
-- CORS Error: Certifique-se de que o backend está rodando e acessível em http://127.0.0.1:5000.
-- Taxas não atualizam: Verifique se a chave da API externa é válida e se o backend 
-está salvando as taxas corretamente.
-- Live Server não abre: Pare outras instâncias do Live Server no VS Code 
-(Port: 5500 na barra inferior).
+# Desenvolvimento
+- Para adicionar novas moedas permitidas, edite ALLOWED_CURRENCIES em app.py.
+- Para modificar endpoints, edite as classes CurrencyList e CurrencyResource em app.py.
+- Para atualizar a documentação, modifique swagger_config em app.py e rebuild o projeto.
+- Use o Swagger (/swagger) para testar endpoints durante o desenvolvimento.
+
+# Problemas Comuns
+- Erro 500 no banco: Verifique se watchlist.db tem permissões de escrita no diretório backend/.
+- CORS bloqueado: Confirme que o frontend está acessando http://127.0.0.1:5000.
+- Swagger não carrega: Certifique-se de que static/swagger.json foi gerado corretamente.
+- Taxas não persistem: Verifique se as chamadas PUT estão atualizando rate e updated_at no banco.
