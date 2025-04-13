@@ -65,11 +65,11 @@ A API oferece os seguintes endpoints:
   - Corpo: {"code": "USD", "name": "Dólar Americano", "rate": null}
   - Resposta: Moeda adicionada ou erro (400, 409).
   - Restrição: Apenas códigos permitidos (ex.: USD, EUR, BTC).
-- PUT /currencies/<code>
+- PUT /currencies
   - Atualiza a taxa de uma moeda.
   - Corpo: {"rate": 5.6}
   - Resposta: Moeda atualizada ou erro 404.
-- DELETE /currencies/<code>
+- DELETE /currencies
   - Remove uma moeda.
   - Resposta: {"message": "Moeda removida"} ou erro 404.
 Explore todos os endpoints em http://localhost:5000/swagger.
