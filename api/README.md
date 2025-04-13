@@ -19,16 +19,16 @@ Para rodar a API localmente ou com Docker, você precisa de:
 
 # Estrutura do Projeto
 backend/
-├── app.py            # Arquivo principal da API
-├── schema/
-│   └── database.py   # Configuração do banco SQLite
-├── model/
-│   └── currency.py   # Modelo da entidade Currency
-├── static/
-│   └── swagger.json  # Documentação Swagger
-├── requirements.txt  # Dependências do Python
-├── Dockerfile        # Configuração para Docker
-└── README.md         # Este arquivo
+- ├── app.py            # Arquivo principal da API
+- ├── schema/
+- │   └── database.py   # Configuração do banco SQLite
+- ├── model/
+- │   └── currency.py   # Modelo da entidade Currency
+- ├── static/
+- │   └── swagger.json  # Documentação Swagger
+- ├── requirements.txt  # Dependências do Python
+- ├── Dockerfile        # Configuração para Docker
+- └── README.md         # Este arquivo
 
 # Como Executar
 Opção 1: Com Docker (Recomendado)
