@@ -1,6 +1,6 @@
-# Watchlist de Taxas de Câmbio
+# Currency Watchlist
 
-Bem-vindo ao **Watchlist de Taxas de Câmbio**, um projeto para acompanhar taxas de câmbio de moedas fiduciárias e criptomoedas em tempo real. Esta aplicação permite adicionar moedas a uma watchlist, atualizar suas taxas usando uma API externa, e exibir os valores em USD ou BRL.
+**Watchlist de Taxas de Câmbio**, um projeto para acompanhar taxas de câmbio de moedas fiduciárias e criptomoedas em tempo real. Esta aplicação permite adicionar moedas a uma watchlist, atualizar suas taxas usando uma API externa, e exibir os valores em USD ou BRL.
 
 ## Visão Geral
 O projeto é composto por dois componentes principais:
